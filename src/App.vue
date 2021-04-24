@@ -39,10 +39,10 @@ h1 {
   padding-right: 30px !important;
 }
 .el-tabs__item:hover {
-  color: #41b883 !important;
+  color: #66b1ff !important;
 }
 .el-tabs__item.is-active {
-  color: #41b883 !important;
+  color: #66b1ff !important;
 }
 .el-tabs--card > .el-tabs__header .el-tabs__nav {
   border: 0 !important;
@@ -52,5 +52,15 @@ h1 {
 }
 .el-tabs--card > .el-tabs__header {
   border: 0 !important;
+}
+.el-menu-vertical-demo.el-menu .el-submenu .el-submenu__title {
+  color: rgba(255, 255, 255, 0.7) !important;
+  background-color: rgb(25, 26, 35) !important;
+}
+.el-menu-vertical-demo.el-menu .el-submenu .el-submenu__title:hover {
+  color: #fff !important;
+}
+.el-menu.el-menu--inline {
+  background-color: rgb(25, 26, 35) !important;
 }
 </style>

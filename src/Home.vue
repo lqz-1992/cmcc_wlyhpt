@@ -2,8 +2,12 @@
   <el-container>
     <el-aside>
       <div id="logoPosition">
-        <a><img src="./images/logo.png" alt="facebook.png" /></a>
-        <h2>CMCC</h2>
+        <a
+          ><img
+            src="https://file.iviewui.com/admin-pro-dist/img/logo-dark.ab519d9f.png"
+            alt="facebook.png"
+          />
+        </a>
       </div>
       <el-menu
         v-bind:default-active="activeMenu"
@@ -90,7 +94,7 @@
         <el-dropdown>
           <i
             class="el-icon-setting"
-            style="margin-right: 15px; color: #fff"
+            style="margin-right: 15px; color: rgb(96, 98, 102)"
           ></i>
           <el-dropdown-menu slot="dropdown">
             <el-dropdown-item>查看</el-dropdown-item>
@@ -245,44 +249,51 @@ window.onload = function () {
 .el-aside {
   color: #333;
   width: 256px !important;
-  background-color: #545c64;
+  background-color: rgb(25, 26, 35);
 }
 .el-aside a {
   display: inline-block;
   width: 100%;
   height: 50px;
 }
+li.el-menu-item {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+li.el-menu-item {
+  background-color: rgb(25, 26, 35) !important;
+}
 li.el-menu-item.is-active {
-  color: #41b883 !important;
-  background-color: #35495e !important;
+  color: #fff !important;
+  background-color: #66b1ff !important;
+}
+li.el-menu-item :hover {
+  color: #fff !important;
 }
 #logoPosition {
-  height: 100px;
+  height: 64px;
   text-align: center;
-}
-#logoPosition h2 {
-  line-height: 50px;
 }
 #logoPosition > a {
   line-height: 64px;
 }
 #logoPosition > a img {
-  width: 40px;
+  width: 200px;
   vertical-align: middle;
 }
-#logoPosition > h2 {
+#logoPosition > a span {
+  display: inline-block;
+  line-height: 64px;
+  color: white;
   margin: 0;
-  color: #fff;
+  vertical-align: middle;
+  margin-left: 8px;
 }
 .el-menu {
   border: 0px;
 }
-.el-submenu__title {
-  font-weight: bold;
-}
 .el-header {
-  background-color: #35495e;
-  color: #fff;
+  background-color: #fff;
+  color: rgb(96, 98, 102);
   height: 64px !important;
   line-height: 64px;
   text-align: right;
@@ -290,5 +301,8 @@ li.el-menu-item.is-active {
 }
 .el-main {
   background-color: #f5f7f9;
+}
+.el-submenu [class^="el-icon-"] {
+  margin-right: 12px;
 }
 </style>
