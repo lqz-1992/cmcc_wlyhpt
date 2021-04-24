@@ -63,4 +63,7 @@ h1 {
 .el-menu.el-menu--inline {
   background-color: rgb(25, 26, 35) !important;
 }
+.el-tabs__header.is-top {
+  margin: 0 0 12px;
+}
 </style>

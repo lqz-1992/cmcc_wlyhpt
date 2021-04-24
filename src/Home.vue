@@ -24,7 +24,7 @@
             <span>首页</span>
           </template>
           <el-menu-item id="indexBtn" index="1-1" name="1-1" @click="goIndex"
-            >首页</el-menu-item
+            ><a>首页</a></el-menu-item
           >
           <el-menu-item index="1-2" name="1-2" @click="addTab"
             ><router-link to="/sitesearch">站点搜索</router-link></el-menu-item
@@ -243,6 +243,9 @@ window.onload = function () {
 </script>
 
 <style scoped>
+.el-menu-vertical-demo:not(.el-menu--collapse) {
+  width: 256px;
+}
 .el-container {
   height: 100vh;
 }
@@ -262,12 +265,12 @@ li.el-menu-item {
 li.el-menu-item {
   background-color: rgb(25, 26, 35) !important;
 }
+li.el-menu-item :hover {
+  color: #fff !important;
+}
 li.el-menu-item.is-active {
   color: #fff !important;
   background-color: #66b1ff !important;
-}
-li.el-menu-item :hover {
-  color: #fff !important;
 }
 #logoPosition {
   height: 64px;
@@ -301,6 +304,10 @@ li.el-menu-item :hover {
 }
 .el-main {
   background-color: #f5f7f9;
+  padding-top: 12px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  padding-left: 20px;
 }
 .el-submenu [class^="el-icon-"] {
   margin-right: 12px;
