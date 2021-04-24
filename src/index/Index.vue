@@ -10,18 +10,7 @@
             >
           </div>
           <div class="text item">
-            <el-table
-              :data="tableData"
-              height="240px"
-              style="width: 100%"
-              size="small"
-            >
-              <el-table-column prop="date" label="日期" width="180">
-              </el-table-column>
-              <el-table-column prop="name" label="姓名" width="180">
-              </el-table-column>
-              <el-table-column prop="address" label="地址"> </el-table-column>
-            </el-table>
+            <div id="main" style="width: 100%; height: 300px"></div>
           </div>
         </el-card>
       </el-col>
@@ -204,6 +193,7 @@
 </template>
 
 <script>
+import * as echarts from "echarts";
 export default {
   data() {
     return {
@@ -246,6 +236,28 @@ export default {
       ],
     };
   },
+  mounted() {
+    // 基于准备好的dom，初始化echarts实例
+    let myChart = echarts.init(document.getElementById("main"));
+    // 绘制图表
+    myChart.setOption({
+      title: {
+        text: "ECharts 入门示例",
+      },
+      tooltip: {},
+      xAxis: {
+        data: ["衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子"],
+      },
+      yAxis: {},
+      series: [
+        {
+          name: "销量",
+          type: "bar",
+          data: [65, 20, 36, 10, 10, 20],
+        },
+      ],
+    });
+  },
 };
 </script>
 
@@ -272,6 +284,6 @@ export default {
 }
 .box-card {
   width: 100%;
-  height: 280px;
+  height: 350px;
 }
 </style>
