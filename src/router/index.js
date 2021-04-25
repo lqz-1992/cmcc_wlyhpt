@@ -21,6 +21,7 @@ const routes = [
     path: '/',
     name: 'Home',
     component: Home,
+    meta: { keepAlive: true },
     children: [{
       path: '/sitesearch',
       name: 'SiteSearch',

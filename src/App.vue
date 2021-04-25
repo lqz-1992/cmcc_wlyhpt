@@ -66,4 +66,14 @@ h1 {
 .el-tabs__header.is-top {
   margin: 0 0 12px;
 }
+.el-submenu.is-active.is-opened > .el-submenu__title {
+  color: white !important;
+}
+.el-menu-vertical-demo.el-menu .el-submenu.is-active > .el-submenu__title {
+  color: white !important;
+}
+.el-breadcrumb__inner {
+  color: rgb(153, 153, 153);
+  margin-left: 6px;
+}
 </style>

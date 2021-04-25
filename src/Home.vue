@@ -24,7 +24,7 @@
             <span>首页</span>
           </template>
           <el-menu-item id="indexBtn" index="1-1" name="1-1" @click="goIndex"
-            ><a>首页</a></el-menu-item
+            ><a>工作台</a></el-menu-item
           >
           <el-menu-item index="1-2" name="1-2" @click="addTab"
             ><router-link to="/sitesearch">站点搜索</router-link></el-menu-item
@@ -91,6 +91,11 @@
 
     <el-container>
       <el-header>
+        <el-breadcrumb separator-class="el-icon-arrow-right">
+          <el-breadcrumb-item>Admin Pro</el-breadcrumb-item>
+          <el-breadcrumb-item>{{breadCrump}}</el-breadcrumb-item>
+          <el-breadcrumb-item>{{breadCrumpDeepest}}</el-breadcrumb-item>
+        </el-breadcrumb>
         <el-dropdown>
           <i
             class="el-icon-setting"
@@ -112,7 +117,7 @@
           @tab-remove="removeTab"
           @tab-click="jumpPath"
         >
-          <el-tab-pane label="首页" name="1-1"> <Index /> </el-tab-pane>
+          <el-tab-pane label="工作台" name="1-1"> <Index /> </el-tab-pane>
           <el-tab-pane
             v-for="item in editableTabs"
             :key="item.name"
@@ -143,6 +148,8 @@ export default {
       editableTabsValue: "1-1",
       editableTabs: [],
       pathArr: [],
+      breadCrump: "首页",
+      breadCrumpDeepest: "工作台",
     };
   },
   methods: {
@@ -231,6 +238,58 @@ export default {
     editableTabsValue: function (val) {
       this.activeMenu = val;
     },
+    activeMenu: function (val) {
+      switch (val) {
+        case "1-1":
+          this.breadCrump = "首页";
+          this.breadCrumpDeepest = "首页";
+          break;
+        case "1-2":
+          this.breadCrump = "首页";
+          this.breadCrumpDeepest = "站点搜索";
+          break;
+        case "2-1":
+          this.breadCrump = "预规划";
+          this.breadCrumpDeepest = "预规划库";
+          break;
+        case "2-2":
+          this.breadCrump = "预规划";
+          this.breadCrumpDeepest = "草稿箱";
+          break;
+        case "3-1":
+          this.breadCrump = "地市规划";
+          this.breadCrumpDeepest = "已规划库";
+          break;
+        case "3-2":
+          this.breadCrump = "地市规划";
+          this.breadCrumpDeepest = "发起地市规划";
+          break;
+        case "3-3":
+          this.breadCrump = "地市规划";
+          this.breadCrumpDeepest = "待处理地市规划";
+          break;
+        case "3-4":
+          this.breadCrump = "地市规划";
+          this.breadCrumpDeepest = "已处理地市规划";
+          break;
+        case "4-1":
+          this.breadCrump = "立项申请";
+          this.breadCrumpDeepest = "立项站点库";
+          break;
+        case "4-2":
+          this.breadCrump = "立项申请";
+          this.breadCrumpDeepest = "发起立项申请";
+          break;
+        case "4-3":
+          this.breadCrump = "立项申请";
+          this.breadCrumpDeepest = "待处理立项申请";
+          break;
+        case "4-4":
+          this.breadCrump = "立项申请";
+          this.breadCrumpDeepest = "已处理立项申请";
+          break;
+      }
+    },
   },
 };
 
@@ -238,7 +297,9 @@ export default {
 window.onload = function () {
   let e = new Event("click");
   let a = document.getElementById("indexBtn");
-  a.dispatchEvent(e);
+  if (a) {
+    a.dispatchEvent(e);
+  }
 };
 </script>
 
@@ -275,6 +336,7 @@ li.el-menu-item.is-active {
 #logoPosition {
   height: 64px;
   text-align: center;
+  margin-top: 0;
 }
 #logoPosition > a {
   line-height: 64px;
@@ -301,6 +363,8 @@ li.el-menu-item.is-active {
   line-height: 64px;
   text-align: right;
   font-size: 12px;
+  box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
+  z-index: 20;
 }
 .el-main {
   background-color: #f5f7f9;
@@ -311,5 +375,10 @@ li.el-menu-item.is-active {
 }
 .el-submenu [class^="el-icon-"] {
   margin-right: 12px;
+}
+.el-breadcrumb {
+  float: left;
+  line-height: 64px;
+  font-size: 14px;
 }
 </style>
