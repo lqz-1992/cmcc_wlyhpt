@@ -1,34 +1,107 @@
 <template>
-  <div id="main" style="width: 600px; height: 400px"></div>
+  <div id="container">
+    <el-row>
+      <el-col :span="10" style="height: 100vh"></el-col>
+      <el-col :span="4">
+        <div id="logoPosition">
+          <img
+            src="https://file.iviewui.com/admin-pro-dist/img/logo.7b8cc895.png"
+            alt=""
+            srcset=""
+            width="300"
+          />
+        </div>
+        <div id="loginBox">
+          <el-form ref="form" :model="sizeForm" size="large">
+            <el-form-item>
+              <el-input v-model="sizeForm.name" placeholder="用户名"></el-input>
+            </el-form-item>
+            <el-form-item>
+              <el-input
+                type="password"
+                v-model="sizeForm.password"
+                placeholder="密码"
+              ></el-input>
+            </el-form-item>
+            <el-form-item
+              ><el-checkbox
+                label="自动登录"
+                name="isRemember"
+                v-model="isRemember"
+              ></el-checkbox>
+              <a class="page-account-register" href=""
+                >忘记密码</a
+              ></el-form-item
+            >
+            <el-form-item size="large">
+              <el-button style="width: 100%" type="primary" @click="onSubmit"
+                >立即登录</el-button
+              >
+            </el-form-item>
+          </el-form>
+        </div>
+        <div id="otherLoginPath">
+          <span>其它登录方式</span
+          ><img
+            src="https://file.iviewui.com/admin-pro-dist/img/icon-social-wechat.c69ec08c.svg"
+            alt=""
+          /><img
+            src="https://file.iviewui.com/admin-pro-dist/img/icon-social-qq.2cf4276d.svg"
+            alt=""
+          /><img
+            src="https://file.iviewui.com/admin-pro-dist/img/icon-social-weibo.cbf658a0.svg"
+            alt=""
+          />
+          <a class="page-account-register" href="">注册账号</a>
+        </div>
+      </el-col>
+      <el-col :span="10" style="height: 100vh"></el-col>
+    </el-row>
+  </div>
 </template>
 
 <script>
-import * as echarts from "echarts";
 export default {
-  mounted() {
-    // 基于准备好的dom，初始化echarts实例
-    var myChart = echarts.init(document.getElementById("main"));
-    // 绘制图表
-    myChart.setOption({
-      title: {
-        text: "ECharts 入门示例",
+  data() {
+    return {
+      sizeForm: {
+        name: "",
+        password: "",
       },
-      tooltip: {},
-      xAxis: {
-        data: ["衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子"],
-      },
-      yAxis: {},
-      series: [
-        {
-          name: "销量",
-          type: "bar",
-          data: [5, 20, 36, 10, 10, 20],
-        },
-      ],
-    });
+      isRemember: false,
+    };
+  },
+  methods: {
+    onSubmit() {
+      console.log("submit!");
+    },
   },
 };
 </script>
 
 <style>
+#logoPosition {
+  margin-top: 64px;
+  text-align: center;
+}
+#otherLoginPath span {
+  line-height: 1.5;
+  color: #515a6e;
+  font-size: 14px;
+}
+#otherLoginPath img {
+  width: 24px;
+  margin-left: 16px;
+  cursor: pointer;
+  vertical-align: middle;
+  opacity: 0.7;
+}
+#otherLoginPath img:hover {
+  opacity: 1;
+}
+.page-account-register {
+  float: right;
+  font-size: 14px;
+  color: rgb(45, 140, 240);
+}
 </style>
