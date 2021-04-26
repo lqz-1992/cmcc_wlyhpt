@@ -13,6 +13,7 @@ import Lxsq from '../lxsq/Lxsq.vue'
 import TodoLxsq from '../lxsq/TodoLxsq.vue'
 import DoneLxsq from '../lxsq/DoneLxsq.vue'
 import Login from '../Login.vue'
+import Registration from '../Registration.vue'
 
 Vue.use(VueRouter)
 
@@ -82,6 +83,10 @@ const routes = [
     path: '/login',
     name: 'Login',
     component: Login,
+  }, {
+    path: '/reg',
+    name: 'Registration',
+    component: Registration,
   }
 ]
 

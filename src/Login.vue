@@ -14,10 +14,15 @@
         <div class="loginBox">
           <el-form ref="form" :model="sizeForm" size="large">
             <el-form-item>
-              <el-input v-model="sizeForm.name" placeholder="账号"></el-input>
+              <el-input
+                prefix-icon="el-icon-user"
+                v-model="sizeForm.name"
+                placeholder="账号"
+              ></el-input>
             </el-form-item>
             <el-form-item>
               <el-input
+                prefix-icon="el-icon-lock"
                 type="password"
                 v-model="sizeForm.password"
                 placeholder="密码"
@@ -50,7 +55,7 @@
             src="https://file.iviewui.com/admin-pro-dist/img/icon-social-weibo.cbf658a0.svg"
             alt=""
           />
-          <a class="account-register" href="">注册账号</a>
+          <a class="account-register" href="./reg">注册账号</a>
         </div>
       </el-col>
       <el-col :span="10" style="height: 100vh"></el-col>
