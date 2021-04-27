@@ -76,7 +76,28 @@ export default {
   },
   methods: {
     onSubmit() {
-      this.$router.push("/");
+      var that = this;
+      var xmlhttp;
+      xmlhttp = new XMLHttpRequest();
+      xmlhttp.open(
+        "GET",
+        "http://localhost:8080/cmcc/login?userid=" +
+          that.sizeForm.name +
+          "&password=" +
+          that.sizeForm.password,
+        true
+      );
+      xmlhttp.send();
+      xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+          var res = xmlhttp.responseText;
+          if (res == "success") {
+            that.$router.push("/");
+          } else {
+            that.$router.push("/reg");
+          }
+        }
+      };
     },
   },
 };
