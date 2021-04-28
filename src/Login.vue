@@ -30,7 +30,7 @@
             </el-form-item>
             <el-form-item
               ><el-checkbox
-                label="自动登录"
+                label="记住我"
                 name="isRemember"
                 v-model="isRemember"
               ></el-checkbox>
@@ -68,36 +68,60 @@ export default {
   data() {
     return {
       sizeForm: {
-        name: "",
-        password: "",
+        name: localStorage.getItem("name") ? localStorage.getItem("name") : "",
+        password: localStorage.getItem("password")
+          ? localStorage.getItem("password")
+          : "",
       },
-      isRemember: false,
+      isRemember: localStorage.getItem("isRemember") ? true : false,
     };
   },
   methods: {
     onSubmit() {
       var that = this;
       var xmlhttp;
-      xmlhttp = new XMLHttpRequest();
-      xmlhttp.open(
-        "GET",
-        "http://localhost:8080/cmcc/login?userid=" +
-          that.sizeForm.name +
-          "&password=" +
-          that.sizeForm.password,
-        true
-      );
-      xmlhttp.send();
-      xmlhttp.onreadystatechange = function () {
-        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-          var res = xmlhttp.responseText;
-          if (res == "success") {
-            that.$router.push("/");
-          } else {
-            that.$router.push("/reg");
+      if (
+        that.sizeForm.name != null &&
+        that.sizeForm.name != "" &&
+        that.sizeForm.password != null &&
+        that.sizeForm.password != ""
+      ) {
+        xmlhttp = new XMLHttpRequest();
+        xmlhttp.open(
+          "GET",
+          "http://localhost:8080/cmcc/system_User!login.action?userid=" +
+            that.sizeForm.name +
+            "&password=" +
+            that.sizeForm.password,
+          true
+        );
+        xmlhttp.send();
+        xmlhttp.onreadystatechange = function () {
+          if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            var res = xmlhttp.responseText;
+            if (res == "success") {
+              that.$router.push("/");
+              if (that.isRemember) {
+                localStorage.setItem("name", that.sizeForm.name);
+                localStorage.setItem("password", that.sizeForm.password);
+                localStorage.setItem("isRemember", that.isRemember);
+              }
+            } else {
+              that.$router.push("/reg");
+            }
           }
-        }
-      };
+        };
+      } else {
+        this.$alert("请确认账号密码是否不为空。", "提示", {
+          confirmButtonText: "确定",
+          // callback: (action) => {
+          //   this.$message({
+          //     type: "info",
+          //     message: `action: ${action}`,
+          //   });
+          // },
+        });
+      }
     },
   },
 };
