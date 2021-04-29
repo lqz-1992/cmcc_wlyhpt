@@ -39,15 +39,6 @@
             ><router-link to="/yughdraftbox">草稿箱</router-link></el-menu-item
           >
         </el-submenu>
-        <el-submenu index="3">
-          <template slot="title">
-            <i class="el-icon-document"></i>
-            <span>地市规划</span>
-          </template>
-          <el-menu-item index="3-1" name="3-1" @click="addTab"
-            ><router-link to="/yghk">已规划库</router-link></el-menu-item
-          >
-        </el-submenu>
       </el-menu>
     </el-aside>
 
@@ -216,10 +207,6 @@ export default {
         case "2-2":
           this.breadCrump = "预规划";
           this.breadCrumpDeepest = "草稿箱";
-          break;
-        case "3-1":
-          this.breadCrump = "地市规划";
-          this.breadCrumpDeepest = "已规划库";
           break;
       }
     },

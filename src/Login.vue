@@ -101,6 +101,10 @@ export default {
             var res = xmlhttp.responseText;
             if (res) {
               that.$router.push("/");
+              that.$message({
+                type: "success",
+                message: "登陆成功。",
+              });
               if (that.isRemember) {
                 localStorage.setItem("name", that.sizeForm.name);
                 localStorage.setItem("password", that.sizeForm.password);
@@ -108,19 +112,32 @@ export default {
                 localStorage.setItem("user_name", res);
               }
             } else {
-              that.$router.push("/reg");
+              that
+                .$confirm(
+                  "请确认账号密码是否輸入错误，或前往注册页面。",
+                  "提示",
+                  {
+                    confirmButtonText: "注册",
+                    cancelButtonText: "重新輸入",
+                    type: "warning",
+                  }
+                )
+                .then(() => {
+                  that.$router.push("/reg");
+                })
+                .catch(() => {
+                  that.$message({
+                    type: "info",
+                    message: "请重新輸入。",
+                  });
+                });
             }
           }
         };
       } else {
-        this.$alert("请确认账号密码是否不为空。", "提示", {
-          confirmButtonText: "确定",
-          // callback: (action) => {
-          //   this.$message({
-          //     type: "info",
-          //     message: `action: ${action}`,
-          //   });
-          // },
+        that.$message({
+          type: "warning",
+          message: "请确认账号密码是否不为空。",
         });
       }
     },

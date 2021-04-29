@@ -3,7 +3,6 @@ import VueRouter from 'vue-router'
 import Home from '../Home.vue'
 import Yughk from '../yugh/Yughk.vue'
 import YughDraftBox from '../yugh/YughDraftBox.vue'
-import Yghk from '../dsgh/Yghk.vue'
 import Login from '../Login.vue'
 import Registration from '../Registration.vue'
 
@@ -24,11 +23,6 @@ const routes = [
       path: '/yughdraftbox',
       name: 'YughDraftBox',
       component: YughDraftBox,
-      meta: { keepAlive: true }
-    }, {
-      path: '/yghk',
-      name: 'Yghk',
-      component: Yghk,
       meta: { keepAlive: true }
     }]
   }, {

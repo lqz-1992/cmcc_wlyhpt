@@ -43,20 +43,6 @@
                 placeholder="请输入昵称"
               ></el-input>
             </el-form-item>
-            <el-form-item>
-              <el-input
-                prefix-icon="el-icon-message"
-                v-model="sizeForm.emailAddress"
-                placeholder="请输入邮箱地址"
-              ></el-input>
-            </el-form-item>
-            <el-form-item>
-              <el-input
-                prefix-icon="el-icon-mobile-phone"
-                v-model="sizeForm.phoneNumber"
-                placeholder="请输入手机号"
-              ></el-input>
-            </el-form-item>
             <el-form-item size="large">
               <el-button style="width: 100%" type="primary" @click="onRegister"
                 >立即创建</el-button
@@ -80,10 +66,7 @@ export default {
       sizeForm: {
         name: "",
         password: "",
-        passwordConfirm: "",
-        nickName: "",
-        emailAddress: "",
-        phoneNumber: "",
+        passwordConfirm: ""
       },
     };
   },
