@@ -99,14 +99,13 @@ export default {
         xmlhttp.onreadystatechange = function () {
           if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
             var res = xmlhttp.responseText;
-            res = JSON.parse(res.toString());
-            if (res.flag == "true") {
+            if (res) {
               that.$router.push("/");
               if (that.isRemember) {
                 localStorage.setItem("name", that.sizeForm.name);
                 localStorage.setItem("password", that.sizeForm.password);
                 localStorage.setItem("isRemember", that.isRemember);
-                localStorage.setItem("user_name", res.info.retmsg.user_name);
+                localStorage.setItem("user_name", res);
               }
             } else {
               that.$router.push("/reg");
