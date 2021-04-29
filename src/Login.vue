@@ -89,7 +89,7 @@ export default {
         xmlhttp = new XMLHttpRequest();
         xmlhttp.open(
           "GET",
-          "http://localhost:8080/cmcc/system_User!login.action?userid=" +
+          "http://localhost:8081/cmcc/system_User!login.action?userid=" +
             that.sizeForm.name +
             "&password=" +
             that.sizeForm.password,
@@ -99,12 +99,14 @@ export default {
         xmlhttp.onreadystatechange = function () {
           if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
             var res = xmlhttp.responseText;
-            if (res == "success") {
+            res = JSON.parse(res.toString());
+            if (res.flag == "success") {
               that.$router.push("/");
               if (that.isRemember) {
                 localStorage.setItem("name", that.sizeForm.name);
                 localStorage.setItem("password", that.sizeForm.password);
                 localStorage.setItem("isRemember", that.isRemember);
+                localStorage.setItem("user_name", res.info.user_name);
               }
             } else {
               that.$router.push("/reg");

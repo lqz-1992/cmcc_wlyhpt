@@ -26,9 +26,6 @@
           <el-menu-item id="indexBtn" index="1-1" name="1-1" @click="goIndex"
             ><a>工作台</a></el-menu-item
           >
-          <el-menu-item index="1-2" name="1-2" @click="addTab"
-            ><router-link to="/sitesearch">站点搜索</router-link></el-menu-item
-          >
         </el-submenu>
         <el-submenu index="2">
           <template slot="title">
@@ -50,41 +47,6 @@
           <el-menu-item index="3-1" name="3-1" @click="addTab"
             ><router-link to="/yghk">已规划库</router-link></el-menu-item
           >
-          <el-menu-item index="3-2" name="3-2" @click="addTab"
-            ><router-link to="/dsgh">发起地市规划</router-link></el-menu-item
-          >
-          <el-menu-item index="3-3" name="3-3" @click="addTab"
-            ><router-link to="/tododsgh"
-              >待处理工单地市规划</router-link
-            ></el-menu-item
-          >
-          <el-menu-item index="3-4" name="3-4" @click="addTab"
-            ><router-link to="/donedsgh"
-              >已处理工单地市规划</router-link
-            ></el-menu-item
-          >
-        </el-submenu>
-        <el-submenu index="4">
-          <template slot="title">
-            <i class="el-icon-setting"></i>
-            <span>立项申请</span>
-          </template>
-          <el-menu-item index="4-1" name="4-1" @click="addTab"
-            ><router-link to="/lxk">立项站点库</router-link></el-menu-item
-          >
-          <el-menu-item index="4-2" name="4-2" @click="addTab"
-            ><router-link to="/lxsq">发起立项申请</router-link></el-menu-item
-          >
-          <el-menu-item index="4-3" name="4-3" @click="addTab"
-            ><router-link to="/todolxsq"
-              >待处理立项申请</router-link
-            ></el-menu-item
-          >
-          <el-menu-item index="4-4" name="4-4" @click="addTab"
-            ><router-link to="/donelxsq"
-              >已处理立项申请</router-link
-            ></el-menu-item
-          >
         </el-submenu>
       </el-menu>
     </el-aside>
@@ -93,8 +55,8 @@
       <el-header>
         <el-breadcrumb separator-class="el-icon-arrow-right">
           <el-breadcrumb-item>Admin Pro</el-breadcrumb-item>
-          <el-breadcrumb-item>{{breadCrump}}</el-breadcrumb-item>
-          <el-breadcrumb-item>{{breadCrumpDeepest}}</el-breadcrumb-item>
+          <el-breadcrumb-item>{{ breadCrump }}</el-breadcrumb-item>
+          <el-breadcrumb-item>{{ breadCrumpDeepest }}</el-breadcrumb-item>
         </el-breadcrumb>
         <el-dropdown>
           <i
@@ -107,7 +69,7 @@
             <el-dropdown-item>删除</el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
-        <span>山本五十六</span>
+        <span>{{ userName }}</span>
       </el-header>
 
       <el-main>
@@ -150,6 +112,9 @@ export default {
       pathArr: [],
       breadCrump: "首页",
       breadCrumpDeepest: "工作台",
+      userName: localStorage.getItem("user_name")
+        ? localStorage.getItem("user_name")
+        : "山本五十六",
     };
   },
   methods: {
@@ -244,10 +209,6 @@ export default {
           this.breadCrump = "首页";
           this.breadCrumpDeepest = "首页";
           break;
-        case "1-2":
-          this.breadCrump = "首页";
-          this.breadCrumpDeepest = "站点搜索";
-          break;
         case "2-1":
           this.breadCrump = "预规划";
           this.breadCrumpDeepest = "预规划库";
@@ -259,34 +220,6 @@ export default {
         case "3-1":
           this.breadCrump = "地市规划";
           this.breadCrumpDeepest = "已规划库";
-          break;
-        case "3-2":
-          this.breadCrump = "地市规划";
-          this.breadCrumpDeepest = "发起地市规划";
-          break;
-        case "3-3":
-          this.breadCrump = "地市规划";
-          this.breadCrumpDeepest = "待处理地市规划";
-          break;
-        case "3-4":
-          this.breadCrump = "地市规划";
-          this.breadCrumpDeepest = "已处理地市规划";
-          break;
-        case "4-1":
-          this.breadCrump = "立项申请";
-          this.breadCrumpDeepest = "立项站点库";
-          break;
-        case "4-2":
-          this.breadCrump = "立项申请";
-          this.breadCrumpDeepest = "发起立项申请";
-          break;
-        case "4-3":
-          this.breadCrump = "立项申请";
-          this.breadCrumpDeepest = "待处理立项申请";
-          break;
-        case "4-4":
-          this.breadCrump = "立项申请";
-          this.breadCrumpDeepest = "已处理立项申请";
           break;
       }
     },
